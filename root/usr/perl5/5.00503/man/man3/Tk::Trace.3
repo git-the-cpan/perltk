@@ -1,0 +1,348 @@
+.rn '' }`
+''' $RCSfile$$Revision$$Date$
+'''
+''' $Log$
+'''
+.de Sh
+.br
+.if t .Sp
+.ne 5
+.PP
+\fB\\$1\fR
+.PP
+..
+.de Sp
+.if t .sp .5v
+.if n .sp
+..
+.de Ip
+.br
+.ie \\n(.$>=3 .ne \\$3
+.el .ne 3
+.IP "\\$1" \\$2
+..
+.de Vb
+.ft CW
+.nf
+.ne \\$1
+..
+.de Ve
+.ft R
+
+.fi
+..
+'''
+'''
+'''     Set up \*(-- to give an unbreakable dash;
+'''     string Tr holds user defined translation string.
+'''     Bell System Logo is used as a dummy character.
+'''
+.tr \(*W-|\(bv\*(Tr
+.ie n \{\
+.ds -- \(*W-
+.ds PI pi
+.if (\n(.H=4u)&(1m=24u) .ds -- \(*W\h'-12u'\(*W\h'-12u'-\" diablo 10 pitch
+.if (\n(.H=4u)&(1m=20u) .ds -- \(*W\h'-12u'\(*W\h'-8u'-\" diablo 12 pitch
+.ds L" ""
+.ds R" ""
+'''   \*(M", \*(S", \*(N" and \*(T" are the equivalent of
+'''   \*(L" and \*(R", except that they are used on ".xx" lines,
+'''   such as .IP and .SH, which do another additional levels of
+'''   double-quote interpretation
+.ds M" """
+.ds S" """
+.ds N" """""
+.ds T" """""
+.ds L' '
+.ds R' '
+.ds M' '
+.ds S' '
+.ds N' '
+.ds T' '
+'br\}
+.el\{\
+.ds -- \(em\|
+.tr \*(Tr
+.ds L" ``
+.ds R" ''
+.ds M" ``
+.ds S" ''
+.ds N" ``
+.ds T" ''
+.ds L' `
+.ds R' '
+.ds M' `
+.ds S' '
+.ds N' `
+.ds T' '
+.ds PI \(*p
+'br\}
+.\"	If the F register is turned on, we'll generate
+.\"	index entries out stderr for the following things:
+.\"		TH	Title 
+.\"		SH	Header
+.\"		Sh	Subsection 
+.\"		Ip	Item
+.\"		X<>	Xref  (embedded
+.\"	Of course, you have to process the output yourself
+.\"	in some meaninful fashion.
+.if \nF \{
+.de IX
+.tm Index:\\$1\t\\n%\t"\\$2"
+..
+.nr % 0
+.rr F
+.\}
+.TH Tk::Trace 3 "Tk800.023" "30/Dec/2000" "perl/Tk Documentation"
+.UC
+.if n .hy 0
+.if n .na
+.ds C+ C\v'-.1v'\h'-1p'\s-2+\h'-1p'+\s0\v'.1v'\h'-1p'
+.de CQ          \" put $1 in typewriter font
+.ft CW
+'if n "\c
+'if t \\&\\$1\c
+'if n \\&\\$1\c
+'if n \&"
+\\&\\$2 \\$3 \\$4 \\$5 \\$6 \\$7
+'.ft R
+..
+.\" @(#)ms.acc 1.5 88/02/08 SMI; from UCB 4.2
+.	\" AM - accent mark definitions
+.bd B 3
+.	\" fudge factors for nroff and troff
+.if n \{\
+.	ds #H 0
+.	ds #V .8m
+.	ds #F .3m
+.	ds #[ \f1
+.	ds #] \fP
+.\}
+.if t \{\
+.	ds #H ((1u-(\\\\n(.fu%2u))*.13m)
+.	ds #V .6m
+.	ds #F 0
+.	ds #[ \&
+.	ds #] \&
+.\}
+.	\" simple accents for nroff and troff
+.if n \{\
+.	ds ' \&
+.	ds ` \&
+.	ds ^ \&
+.	ds , \&
+.	ds ~ ~
+.	ds ? ?
+.	ds ! !
+.	ds /
+.	ds q
+.\}
+.if t \{\
+.	ds ' \\k:\h'-(\\n(.wu*8/10-\*(#H)'\'\h"|\\n:u"
+.	ds ` \\k:\h'-(\\n(.wu*8/10-\*(#H)'\`\h'|\\n:u'
+.	ds ^ \\k:\h'-(\\n(.wu*10/11-\*(#H)'^\h'|\\n:u'
+.	ds , \\k:\h'-(\\n(.wu*8/10)',\h'|\\n:u'
+.	ds ~ \\k:\h'-(\\n(.wu-\*(#H-.1m)'~\h'|\\n:u'
+.	ds ? \s-2c\h'-\w'c'u*7/10'\u\h'\*(#H'\zi\d\s+2\h'\w'c'u*8/10'
+.	ds ! \s-2\(or\s+2\h'-\w'\(or'u'\v'-.8m'.\v'.8m'
+.	ds / \\k:\h'-(\\n(.wu*8/10-\*(#H)'\z\(sl\h'|\\n:u'
+.	ds q o\h'-\w'o'u*8/10'\s-4\v'.4m'\z\(*i\v'-.4m'\s+4\h'\w'o'u*8/10'
+.\}
+.	\" troff and (daisy-wheel) nroff accents
+.ds : \\k:\h'-(\\n(.wu*8/10-\*(#H+.1m+\*(#F)'\v'-\*(#V'\z.\h'.2m+\*(#F'.\h'|\\n:u'\v'\*(#V'
+.ds 8 \h'\*(#H'\(*b\h'-\*(#H'
+.ds v \\k:\h'-(\\n(.wu*9/10-\*(#H)'\v'-\*(#V'\*(#[\s-4v\s0\v'\*(#V'\h'|\\n:u'\*(#]
+.ds _ \\k:\h'-(\\n(.wu*9/10-\*(#H+(\*(#F*2/3))'\v'-.4m'\z\(hy\v'.4m'\h'|\\n:u'
+.ds . \\k:\h'-(\\n(.wu*8/10)'\v'\*(#V*4/10'\z.\v'-\*(#V*4/10'\h'|\\n:u'
+.ds 3 \*(#[\v'.2m'\s-2\&3\s0\v'-.2m'\*(#]
+.ds o \\k:\h'-(\\n(.wu+\w'\(de'u-\*(#H)/2u'\v'-.3n'\*(#[\z\(de\v'.3n'\h'|\\n:u'\*(#]
+.ds d- \h'\*(#H'\(pd\h'-\w'~'u'\v'-.25m'\f2\(hy\fP\v'.25m'\h'-\*(#H'
+.ds D- D\\k:\h'-\w'D'u'\v'-.11m'\z\(hy\v'.11m'\h'|\\n:u'
+.ds th \*(#[\v'.3m'\s+1I\s-1\v'-.3m'\h'-(\w'I'u*2/3)'\s-1o\s+1\*(#]
+.ds Th \*(#[\s+2I\s-2\h'-\w'I'u*3/5'\v'-.3m'o\v'.3m'\*(#]
+.ds ae a\h'-(\w'a'u*4/10)'e
+.ds Ae A\h'-(\w'A'u*4/10)'E
+.ds oe o\h'-(\w'o'u*4/10)'e
+.ds Oe O\h'-(\w'O'u*4/10)'E
+.	\" corrections for vroff
+.if v .ds ~ \\k:\h'-(\\n(.wu*9/10-\*(#H)'\s-2\u~\d\s+2\h'|\\n:u'
+.if v .ds ^ \\k:\h'-(\\n(.wu*10/11-\*(#H)'\v'-.4m'^\v'.4m'\h'|\\n:u'
+.	\" for low resolution devices (crt and lpr)
+.if \n(.H>23 .if \n(.V>19 \
+\{\
+.	ds : e
+.	ds 8 ss
+.	ds v \h'-1'\o'\(aa\(ga'
+.	ds _ \h'-1'^
+.	ds . \h'-1'.
+.	ds 3 3
+.	ds o a
+.	ds d- d\h'-1'\(ga
+.	ds D- D\h'-1'\(hy
+.	ds th \o'bp'
+.	ds Th \o'LP'
+.	ds ae ae
+.	ds Ae AE
+.	ds oe oe
+.	ds Oe OE
+.\}
+.rm #[ #] #H #V #F C
+.SH "NAME"
+Tk::Trace \- emulate Tcl/Tk \fBtrace\fR functions.
+.SH "SYNOPSIS"
+.PP
+.Vb 1
+\& use Tk::Trace
+.Ve
+.Vb 4
+\& $mw->traceVariable(\e$v, 'wru' => [\e&update_meter, $scale]);
+\& %vinfo = $mw->traceVinfo(\e$v);
+\& print "Trace info  :\en  ", join("\en  ", @{$vinfo{-legible}}), "\en";
+\& $mw->traceVdelete(\e$v);
+.Ve
+.SH "DESCRIPTION"
+This class module emulates the Tcl/Tk \fBtrace\fR family of commands by
+binding subroutines of your devising to Perl variables using simple
+\fBTie::Watch\fR features.
+.PP
+Callback format is patterned after the Perl/Tk scheme: supply either a
+code reference, or, supply an array reference and pass the callback
+code reference in the first element of the array, followed by callback
+arguments.
+.PP
+User callbacks are passed these arguments:
+.PP
+.Vb 4
+\& $_[0]        = undef for a scalar, index/key for array/hash
+\& $_[1]        = variable's current (read), new (write), final (undef) value
+\& $_[2]        = operation (r, w, or u)
+\& $_[3 .. $#_] = optional user callback arguments
+.Ve
+As a Trace user, you have an important responsibility when writing your
+callback, since you control the final value assigned to the variable.
+A typical callback might look like:
+.PP
+.Vb 6
+\& sub callback {
+\&    my($index, $value, $op, @args) = @_;
+\&    return if $op eq 'u';
+\&    # .... code which uses $value ...
+\&    return $value;     # variable's final value
+\& }
+.Ve
+Note that the callback's return value becomes the variable's final value,
+for either read or write traces.
+.PP
+For write operations, the variable is updated with its new value before
+the callback is invoked.
+.PP
+Only one callback can be attached to a variable, but read, write and undef
+operations can be traced simultaneously.
+.SH "METHODS"
+.Ip "$mw->traceVariable(varRef, op => callback);" 4
+\fBvarRef\fR is a reference to the scalar, array or hash variable you
+wish to trace.  \fBop\fR is the trace operation, and can be any combination
+of \fBr\fR for read, \fBw\fR for write, and \fBu\fR for undef.  \fBcallback\fR is a
+standard Perl/Tk callback, and is invoked, depending upon the value of
+\fBop\fR, whenever the variable is read, written, or destroyed.
+.Ip "%vinfo = $mw->traceVinfo(varRef);" 4
+Returns a hash detailing the internals of the Trace object, with these
+keys:
+.Sp
+.Vb 10
+\& %vinfo = (
+\&     -variable =>  varRef
+\&     -debug    =>  '0'
+\&     -shadow   =>  '1'
+\&     -value    =>  'HELLO SCALAR'
+\&     -destroy  =>  callback
+\&     -fetch    =>  callback
+\&     -store    =>  callback
+\&     -legible  =>  above data formatted as a list of string, for printing
+\& );
+.Ve
+For array and hash Trace objects, the \fB\-value\fR key is replaced with a
+\fB\-ptr\fR key which is a reference to the parallel array or hash.
+Additionally, for an array or hash, there are key/value pairs for
+all the variable specific callbacks.
+.Ip "$mw->traceVdelete(\e$v);" 4
+Stop tracing the variable.
+.SH "EXAMPLE"
+.PP
+.Vb 1
+\& use Tk;
+.Ve
+.Vb 1
+\& # Trace a Scale's variable and move a meter in unison.
+.Ve
+.Vb 6
+\& $pi = 3.1415926;
+\& $mw = MainWindow->new;
+\& $c = $mw->Canvas(qw/-width 200 -height 110 -bd 2 -relief sunken/)->grid;
+\& $c->createLine(qw/100 100 10 100 -tag meter/);
+\& $s = $mw->Scale(qw/-orient h -from 0 -to 100 -variable/ => \e$v)->grid;
+\& $mw->Label(-text => 'Slide Me for 5 Seconds')->grid;
+.Ve
+.Vb 1
+\& $mw->traceVariable(\e$v, 'w' => [\e&update_meter, $s]);
+.Ve
+.Vb 6
+\& $mw->after(5000 => sub {
+\&     print "Untrace time ...\en";
+\&     %vinfo = $s->traceVinfo(\e$v);
+\&     print "Watch info  :\en  ", join("\en  ", @{$vinfo{-legible}}), "\en";
+\&     $c->traceVdelete(\e$v);
+\& });
+.Ve
+.Vb 1
+\& MainLoop;
+.Ve
+.Vb 11
+\& sub update_meter {
+\&     my($index, $value, $op, @args) = @_;
+\&     return if $op eq 'u';
+\&     $min = $s->cget(-from);
+\&     $max = $s->cget(-to);
+\&     $pos = $value / abs($max - $min);
+\&     $x = 100.0 - 90.0 * (cos( $pos * $pi ));
+\&     $y = 100.0 - 90.0 * (sin( $pos * $pi ));
+\&     $c->coords(qw/meter 100 100/, $x, $y);
+\&     return $value;
+\& }
+.Ve
+.SH "HISTORY"
+.PP
+.Vb 2
+\& Stephen.O.Lidie@Lehigh.EDU, Lehigh University Computing Center, 2000/08/01
+\& . Version 1.0, for Tk800.022.
+.Ve
+.SH "COPYRIGHT"
+Copyright (C) 2000 \- 2000 Stephen O. Lidie. All rights reserved.
+.PP
+This program is free software; you can redistribute it and/or modify it under
+the same terms as Perl itself.
+
+.rn }` ''
+.IX Title "Tk::Trace 3"
+.IX Name "Tk::Trace - emulate Tcl/Tk B<trace> functions."
+
+.IX Header "NAME"
+
+.IX Header "SYNOPSIS"
+
+.IX Header "DESCRIPTION"
+
+.IX Header "METHODS"
+
+.IX Item "$mw->traceVariable(varRef, op => callback);"
+
+.IX Item "%vinfo = $mw->traceVinfo(varRef);"
+
+.IX Item "$mw->traceVdelete(\e$v);"
+
+.IX Header "EXAMPLE"
+
+.IX Header "HISTORY"
+
+.IX Header "COPYRIGHT"
+

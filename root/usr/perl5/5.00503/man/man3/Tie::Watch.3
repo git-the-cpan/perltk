@@ -1,0 +1,436 @@
+.rn '' }`
+''' $RCSfile$$Revision$$Date$
+'''
+''' $Log$
+'''
+.de Sh
+.br
+.if t .Sp
+.ne 5
+.PP
+\fB\\$1\fR
+.PP
+..
+.de Sp
+.if t .sp .5v
+.if n .sp
+..
+.de Ip
+.br
+.ie \\n(.$>=3 .ne \\$3
+.el .ne 3
+.IP "\\$1" \\$2
+..
+.de Vb
+.ft CW
+.nf
+.ne \\$1
+..
+.de Ve
+.ft R
+
+.fi
+..
+'''
+'''
+'''     Set up \*(-- to give an unbreakable dash;
+'''     string Tr holds user defined translation string.
+'''     Bell System Logo is used as a dummy character.
+'''
+.tr \(*W-|\(bv\*(Tr
+.ie n \{\
+.ds -- \(*W-
+.ds PI pi
+.if (\n(.H=4u)&(1m=24u) .ds -- \(*W\h'-12u'\(*W\h'-12u'-\" diablo 10 pitch
+.if (\n(.H=4u)&(1m=20u) .ds -- \(*W\h'-12u'\(*W\h'-8u'-\" diablo 12 pitch
+.ds L" ""
+.ds R" ""
+'''   \*(M", \*(S", \*(N" and \*(T" are the equivalent of
+'''   \*(L" and \*(R", except that they are used on ".xx" lines,
+'''   such as .IP and .SH, which do another additional levels of
+'''   double-quote interpretation
+.ds M" """
+.ds S" """
+.ds N" """""
+.ds T" """""
+.ds L' '
+.ds R' '
+.ds M' '
+.ds S' '
+.ds N' '
+.ds T' '
+'br\}
+.el\{\
+.ds -- \(em\|
+.tr \*(Tr
+.ds L" ``
+.ds R" ''
+.ds M" ``
+.ds S" ''
+.ds N" ``
+.ds T" ''
+.ds L' `
+.ds R' '
+.ds M' `
+.ds S' '
+.ds N' `
+.ds T' '
+.ds PI \(*p
+'br\}
+.\"	If the F register is turned on, we'll generate
+.\"	index entries out stderr for the following things:
+.\"		TH	Title 
+.\"		SH	Header
+.\"		Sh	Subsection 
+.\"		Ip	Item
+.\"		X<>	Xref  (embedded
+.\"	Of course, you have to process the output yourself
+.\"	in some meaninful fashion.
+.if \nF \{
+.de IX
+.tm Index:\\$1\t\\n%\t"\\$2"
+..
+.nr % 0
+.rr F
+.\}
+.TH lib::Tie::Watch 3 "Tk800.023" "30/Dec/2000" "perl/Tk Documentation"
+.UC
+.if n .hy 0
+.if n .na
+.ds C+ C\v'-.1v'\h'-1p'\s-2+\h'-1p'+\s0\v'.1v'\h'-1p'
+.de CQ          \" put $1 in typewriter font
+.ft CW
+'if n "\c
+'if t \\&\\$1\c
+'if n \\&\\$1\c
+'if n \&"
+\\&\\$2 \\$3 \\$4 \\$5 \\$6 \\$7
+'.ft R
+..
+.\" @(#)ms.acc 1.5 88/02/08 SMI; from UCB 4.2
+.	\" AM - accent mark definitions
+.bd B 3
+.	\" fudge factors for nroff and troff
+.if n \{\
+.	ds #H 0
+.	ds #V .8m
+.	ds #F .3m
+.	ds #[ \f1
+.	ds #] \fP
+.\}
+.if t \{\
+.	ds #H ((1u-(\\\\n(.fu%2u))*.13m)
+.	ds #V .6m
+.	ds #F 0
+.	ds #[ \&
+.	ds #] \&
+.\}
+.	\" simple accents for nroff and troff
+.if n \{\
+.	ds ' \&
+.	ds ` \&
+.	ds ^ \&
+.	ds , \&
+.	ds ~ ~
+.	ds ? ?
+.	ds ! !
+.	ds /
+.	ds q
+.\}
+.if t \{\
+.	ds ' \\k:\h'-(\\n(.wu*8/10-\*(#H)'\'\h"|\\n:u"
+.	ds ` \\k:\h'-(\\n(.wu*8/10-\*(#H)'\`\h'|\\n:u'
+.	ds ^ \\k:\h'-(\\n(.wu*10/11-\*(#H)'^\h'|\\n:u'
+.	ds , \\k:\h'-(\\n(.wu*8/10)',\h'|\\n:u'
+.	ds ~ \\k:\h'-(\\n(.wu-\*(#H-.1m)'~\h'|\\n:u'
+.	ds ? \s-2c\h'-\w'c'u*7/10'\u\h'\*(#H'\zi\d\s+2\h'\w'c'u*8/10'
+.	ds ! \s-2\(or\s+2\h'-\w'\(or'u'\v'-.8m'.\v'.8m'
+.	ds / \\k:\h'-(\\n(.wu*8/10-\*(#H)'\z\(sl\h'|\\n:u'
+.	ds q o\h'-\w'o'u*8/10'\s-4\v'.4m'\z\(*i\v'-.4m'\s+4\h'\w'o'u*8/10'
+.\}
+.	\" troff and (daisy-wheel) nroff accents
+.ds : \\k:\h'-(\\n(.wu*8/10-\*(#H+.1m+\*(#F)'\v'-\*(#V'\z.\h'.2m+\*(#F'.\h'|\\n:u'\v'\*(#V'
+.ds 8 \h'\*(#H'\(*b\h'-\*(#H'
+.ds v \\k:\h'-(\\n(.wu*9/10-\*(#H)'\v'-\*(#V'\*(#[\s-4v\s0\v'\*(#V'\h'|\\n:u'\*(#]
+.ds _ \\k:\h'-(\\n(.wu*9/10-\*(#H+(\*(#F*2/3))'\v'-.4m'\z\(hy\v'.4m'\h'|\\n:u'
+.ds . \\k:\h'-(\\n(.wu*8/10)'\v'\*(#V*4/10'\z.\v'-\*(#V*4/10'\h'|\\n:u'
+.ds 3 \*(#[\v'.2m'\s-2\&3\s0\v'-.2m'\*(#]
+.ds o \\k:\h'-(\\n(.wu+\w'\(de'u-\*(#H)/2u'\v'-.3n'\*(#[\z\(de\v'.3n'\h'|\\n:u'\*(#]
+.ds d- \h'\*(#H'\(pd\h'-\w'~'u'\v'-.25m'\f2\(hy\fP\v'.25m'\h'-\*(#H'
+.ds D- D\\k:\h'-\w'D'u'\v'-.11m'\z\(hy\v'.11m'\h'|\\n:u'
+.ds th \*(#[\v'.3m'\s+1I\s-1\v'-.3m'\h'-(\w'I'u*2/3)'\s-1o\s+1\*(#]
+.ds Th \*(#[\s+2I\s-2\h'-\w'I'u*3/5'\v'-.3m'o\v'.3m'\*(#]
+.ds ae a\h'-(\w'a'u*4/10)'e
+.ds Ae A\h'-(\w'A'u*4/10)'E
+.ds oe o\h'-(\w'o'u*4/10)'e
+.ds Oe O\h'-(\w'O'u*4/10)'E
+.	\" corrections for vroff
+.if v .ds ~ \\k:\h'-(\\n(.wu*9/10-\*(#H)'\s-2\u~\d\s+2\h'|\\n:u'
+.if v .ds ^ \\k:\h'-(\\n(.wu*10/11-\*(#H)'\v'-.4m'^\v'.4m'\h'|\\n:u'
+.	\" for low resolution devices (crt and lpr)
+.if \n(.H>23 .if \n(.V>19 \
+\{\
+.	ds : e
+.	ds 8 ss
+.	ds v \h'-1'\o'\(aa\(ga'
+.	ds _ \h'-1'^
+.	ds . \h'-1'.
+.	ds 3 3
+.	ds o a
+.	ds d- d\h'-1'\(ga
+.	ds D- D\h'-1'\(hy
+.	ds th \o'bp'
+.	ds Th \o'LP'
+.	ds ae ae
+.	ds Ae AE
+.	ds oe oe
+.	ds Oe OE
+.\}
+.rm #[ #] #H #V #F C
+.SH "NAME"
+.PP
+.Vb 1
+\& Tie::Watch - place watchpoints on Perl variables.
+.Ve
+.SH "SYNOPSIS"
+.PP
+.Vb 1
+\& use Tie::Watch;
+.Ve
+.Vb 14
+\& $watch = Tie::Watch->new(
+\&     -variable => \e$frog,
+\&     -debug    => 1,
+\&     -shadow   => 0,                    
+\&     -fetch    => [\e&fetch, 'arg1', 'arg2', ..., 'argn'],
+\&     -store    => \e&store,
+\&     -destroy  => sub {print "Final value=$frog.\en"},
+\& }
+\& %vinfo = $watch->Info;
+\& $args  = $watch->Args(-fetch);
+\& $val   = $watch->Fetch;
+\& print "val=", $watch->Say($val), ".\en";
+\& $watch->Store('Hello');
+\& $watch->Unwatch;
+.Ve
+.SH "DESCRIPTION"
+This class module binds one or more subroutines of your devising to a
+Perl variable.  All variables can have \fBFETCH\fR, \fBSTORE\fR and
+\fBDESTROY\fR callbacks.  Additionally, arrays can define \fBCLEAR\fR, \fBEXTEND\fR,
+\fBFETCHSIZE\fR, \fBPOP\fR, \fBPUSH\fR, \fBSHIFT\fR, \fBSPLICE\fR, \fBSTORESIZE\fR and
+\fBUNSHIFT\fR callbacks, and hashes can define \fBCLEAR\fR, \fBDELETE\fR, \fBEXISTS\fR,
+\fBFIRSTKEY\fR and \fBNEXTKEY\fR callbacks.  If these term are unfamiliar to you,
+I \fIreally\fR suggest you read the \fIperltie\fR manpage.
+.PP
+With Tie::Watch you can:
+.PP
+.Vb 4
+\& . alter a variable's value
+\& . prevent a variable's value from being changed
+\& . invoke a Perl/Tk callback when a variable changes
+\& . trace references to a variable
+.Ve
+Callback format is patterned after the Perl/Tk scheme: supply either a
+code reference, or, supply an array reference and pass the callback
+code reference in the first element of the array, followed by callback
+arguments.  (See examples in the Synopsis, above.)
+.PP
+Tie::Watch provides default callbacks for any that you fail to
+specify.  Other than negatively impacting performance, they perform
+the standard action that you'd expect, so the variable behaves
+\*(L"normally\*(R".  Once you override a default callback, perhaps to insert
+debug code like print statements, your callback normally finishes by
+calling the underlying (overridden) method.  But you don't have to!
+.PP
+To map a tied method name to a default callback name simply lowercase
+the tied method name and uppercase its first character.  So FETCH
+becomes Fetch, NEXTKEY becomes Nextkey, etcetera.
+.PP
+Here are two callbacks for a scalar. The \fBFETCH\fR (read) callback does
+nothing other than illustrate the fact that it returns the value to
+assign the variable.  The \fBSTORE\fR (write) callback uppercases the
+variable and returns it.  In all cases the callback \fImust\fR return the
+correct read or write value \- typically, it does this by invoking the
+underlying method.
+.PP
+.Vb 4
+\& my $fetch_scalar = sub {
+\&     my($self) = @_;
+\&     $self->Fetch;
+\& };
+.Ve
+.Vb 4
+\& my $store_scalar = sub {
+\&     my($self, $new_val) = @_;
+\&     $self->Store(uc $new_val);
+\& };
+.Ve
+Here are \fBFETCH\fR and \fBSTORE\fR callbacks for either an array or hash.
+They do essentially the same thing as the scalar callbacks, but
+provide a little more information.
+.PP
+.Vb 9
+\& my $fetch = sub {
+\&     my($self, $key) = @_;
+\&     my $val = $self->Fetch($key);
+\&     print "In fetch callback, key=$key, val=", $self->Say($val);
+\&     my $args = $self->Args(-fetch);
+\&     print ", args=('", join("', '",  @$args), "')" if $args;
+\&     print ".\en";
+\&     $val;
+\& };
+.Ve
+.Vb 12
+\& my $store = sub {
+\&     my($self, $key, $new_val) = @_;
+\&     my $val = $self->Fetch($key);
+\&     $new_val = uc $new_val;
+\&     $self->Store($key, $new_val);
+\&     print "In store callback, key=$key, val=", $self->Say($val),
+\&       ", new_val=", $self->Say($new_val);
+\&     my $args = $self->Args(-store);
+\&     print ", args=('", join("', '",  @$args), "')" if $args;
+\&     print ".\en";
+\&     $new_val;
+\& };
+.Ve
+In all cases, the first parameter is a reference to the Watch object,
+used to invoke the following class methods.
+.SH "METHODS"
+.Ip "$watch = Tie::Watch->new(\-options => values);" 4
+The watchpoint constructor method that accepts option/value pairs to
+create and configure the Watch object.  The only required option is
+\fB\-variable\fR.
+.Sp
+\fB\-variable\fR is a \fIreference\fR to a scalar, array or hash variable.
+.Sp
+\fB\-debug\fR (default 0) is 1 to activate debug print statements internal
+to Tie::Watch.
+.Sp
+\fB\-shadow\fR (default 1) is 0 to disable array and hash shadowing.  To
+prevent infinite recursion Tie::Watch maintains parallel variables for
+arrays and hashes.  When the watchpoint is created the parallel shadow
+variable is initialized with the watched variable's contents, and when
+the watchpoint is deleted the shadow variable is copied to the original
+variable.  Thus, changes made during the watch process are not lost.
+Shadowing is on my default.  If you disable shadowing any changes made
+to an array or hash are lost when the watchpoint is deleted.
+.Sp
+Specify any of the following relevant callback parameters, in the
+format described above: \fB\-fetch\fR, \fB\-store\fR, \fB\-destroy\fR.
+Additionally for arrays: \fB\-clear\fR, \fB\-extend\fR, \fB\-fetchsize\fR,
+\fB\-pop\fR, \fB\-push\fR, \fB\-shift\fR, \fB\-splice\fR, \fB\-storesize\fR and
+\fB\-unshift\fR.  Additionally for hashes: \fB\-clear\fR, \fB\-delete\fR,
+\fB\-exists\fR, \fB\-firstkey\fR and \fB\-nextkey\fR.
+.Ip "$args = $watch->Args(\-fetch);" 4
+Returns a reference to a list of arguments for the specified callback,
+or undefined if none.
+.Ip "$watch->Fetch();  $watch->Fetch($key);" 4
+Returns a variable's current value.  \f(CW$key\fR is required for an array or
+hash.
+.Ip "%vinfo = $watch->Info();" 4
+Returns a hash detailing the internals of the Watch object, with these
+keys:
+.Sp
+.Vb 10
+\& %vinfo = {
+\&     -variable =>  SCALAR(0x200737f8)
+\&     -debug    =>  '0'
+\&     -shadow   =>  '1'
+\&     -value    =>  'HELLO SCALAR'
+\&     -destroy  =>  ARRAY(0x200f86cc)
+\&     -fetch    =>  ARRAY(0x200f8558)
+\&     -store    =>  ARRAY(0x200f85a0)
+\&     -legible  =>  above data formatted as a list of string, for printing
+\& }
+.Ve
+For array and hash Watch objects, the \fB\-value\fR key is replaced with a
+\fB\-ptr\fR key which is a reference to the parallel array or hash.
+Additionally, for an array or hash, there are key/value pairs for
+all the variable specific callbacks.
+.Ip "$watch->Say($val);" 4
+Used mainly for debugging, it returns \f(CW$val\fR in quotes if required, or
+the string \*(L"undefined\*(R" for undefined values.
+.Ip "$watch->Store($new_val);  $watch->Store($key, $new_val);" 4
+Store a variable's new value.  \f(CW$key\fR is required for an array or hash.
+.Ip "$watch->Unwatch();" 4
+Stop watching the variable.
+.SH "EFFICIENCY CONSIDERATIONS"
+If you can live using the class methods provided, please do so.  You
+can meddle with the object hash directly and improved watch
+performance, at the risk of your code breaking in the future.
+.SH "AUTHOR"
+Stephen.O.Lidie@Lehigh.EDU
+.SH "HISTORY"
+.PP
+.Vb 3
+\& lusol@Lehigh.EDU, LUCC, 96/05/30
+\& . Original version 0.92 release, based on the Trace module from Hans Mulder,
+\&   and ideas from Tim Bunce.
+.Ve
+.Vb 2
+\& lusol@Lehigh.EDU, LUCC, 96/12/25
+\& . Version 0.96, release two inner references detected by Perl 5.004.
+.Ve
+.Vb 3
+\& lusol@Lehigh.EDU, LUCC, 97/01/11
+\& . Version 0.97, fix Makefile.PL and MANIFEST (thanks Andreas Koenig).
+\&   Make sure test.pl doesn't fail if Tk isn't installed.
+.Ve
+.Vb 2
+\& Stephen.O.Lidie@Lehigh.EDU, Lehigh University Computing Center, 97/10/03
+\& . Version 0.98, implement -shadow option for arrays and hashes.
+.Ve
+.Vb 6
+\& Stephen.O.Lidie@Lehigh.EDU, Lehigh University Computing Center, 98/02/11
+\& . Version 0.99, finally, with Perl 5.004_57, we can completely watch arrays.
+\&   With tied array support this module is essentially complete, so its been
+\&   optimized for speed at the expense of clarity - sorry about that. The
+\&   Delete() method has been renamed Unwatch() because it conflicts with the
+\&   builtin delete().
+.Ve
+.Vb 3
+\& Stephen.O.Lidie@Lehigh.EDU, Lehigh University Computing Center, 99/04/04
+\& . Version 1.0, for Perl 5.005_03, update Makefile.PL for ActiveState, and
+\&   add two examples (one for Perl/Tk).
+.Ve
+.SH "COPYRIGHT"
+Copyright (C) 1996 \- 1999 Stephen O. Lidie. All rights reserved.
+.PP
+This program is free software; you can redistribute it and/or modify it under
+the same terms as Perl itself.
+
+.rn }` ''
+.IX Title "lib::Tie::Watch 3"
+.IX Name "Tie::Watch - place watchpoints on Perl variables."
+
+.IX Header "NAME"
+
+.IX Header "SYNOPSIS"
+
+.IX Header "DESCRIPTION"
+
+.IX Header "METHODS"
+
+.IX Item "$watch = Tie::Watch->new(\-options => values);"
+
+.IX Item "$args = $watch->Args(\-fetch);"
+
+.IX Item "$watch->Fetch();  $watch->Fetch($key);"
+
+.IX Item "%vinfo = $watch->Info();"
+
+.IX Item "$watch->Say($val);"
+
+.IX Item "$watch->Store($new_val);  $watch->Store($key, $new_val);"
+
+.IX Item "$watch->Unwatch();"
+
+.IX Header "EFFICIENCY CONSIDERATIONS"
+
+.IX Header "AUTHOR"
+
+.IX Header "HISTORY"
+
+.IX Header "COPYRIGHT"
+
